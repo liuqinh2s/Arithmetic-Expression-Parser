@@ -1,7 +1,9 @@
 const NUMBERS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const SIGN = ["+", "-", "*", "/"];
+export const EOF = Symbol("EOF");
 
 type tokenType = "NUMBER" | "SIGN" | "EOF";
+type inputType = string | typeof EOF;
 
 interface Token {
   type: tokenType;
@@ -22,10 +24,16 @@ class Lexer {
   }
 
   constructor() {
+    this.token = [];
+    this.tokens = [];
     this.state = this.start;
   }
 
-  start(char: string) {
+  start(char: inputType) {
+    // EOF
+    if (char === EOF) {
+      return;
+    }
     // 数字
     if (NUMBERS.includes(char)) {
       this.token.push(char);
@@ -41,11 +49,6 @@ class Lexer {
       this.emitToken("SIGN", char);
       return this.start;
     }
-    // EOF
-    // if (char === EOF) {
-    //   this.emitToken("EOF", char);
-    //   return this.start;
-    // }
   }
 
   inInt(char: string) {
@@ -89,7 +92,7 @@ class Lexer {
     this.tokens.push({ type, value });
   }
 
-  push(char: string) {
+  push(char: inputType) {
     this.state = this.state(char);
   }
 }
