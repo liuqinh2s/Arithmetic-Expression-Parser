@@ -1,4 +1,4 @@
-import { EOF, lexer } from "./lexer";
+import { EOF, lexer } from "./Lexer";
 
 const input = `1 + 2.3`;
 
