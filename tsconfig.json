@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "noImplicitAny": false,
-    "noEmitOnError": true,
+    "noImplicitAny": true,
+    "noEmitOnError": false,
     "removeComments": false,
     "sourceMap": true,
-    "target": "es6",
+    "lib": ["es2016", "dom"],
+    "target": "ES6",
+    "module": "es6",
     "outDir": "dist"
   },
-  "include": ["src/**/*"],
-  "exclude": ["src/index/*"]
+  "include": ["src/**/*"]
 }

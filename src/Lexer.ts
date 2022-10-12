@@ -29,10 +29,10 @@ class Lexer {
     this.state = this.start;
   }
 
-  start(char: inputType) {
+  start(char: inputType): Function {
     // EOF
     if (char === EOF) {
-      return;
+      return () => {};
     }
     // 数字
     if (NUMBERS.includes(char)) {
@@ -49,6 +49,7 @@ class Lexer {
       this.emitToken("SIGN", char);
       return this.start;
     }
+    return () => {};
   }
 
   inInt(char: string) {
