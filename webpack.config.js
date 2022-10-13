@@ -4,6 +4,9 @@ const __dirname = path.resolve();
 
 const config = {
   mode: "production",
+  optimization: {
+    minimize: false,
+  },
   entry: "./src/test.ts",
   output: {
     path: path.resolve(__dirname, "dist"),

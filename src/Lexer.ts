@@ -49,7 +49,7 @@ class Lexer {
       this.emitToken("SIGN", char);
       return this.start;
     }
-    return () => {};
+    return this.start;
   }
 
   inInt(char: string) {
